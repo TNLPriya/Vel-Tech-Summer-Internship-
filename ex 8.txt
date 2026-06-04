@@ -1,0 +1,20 @@
+PROJECT NAME:
+Student Grade Predictor
+
+DATASET:
+student-mat.csv
+
+FEATURES:
+studytime
+failures
+absences
+age
+
+TARGET:
+G3
+
+QUESTION:
+Can we predict a student's final grade using machine learning?
+
+MODEL:
+Linear Regression
