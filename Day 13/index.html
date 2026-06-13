@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Dropout Early Warning System</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🎓 Course Dropout Early Warning System</h1>
+        <p>AI-Powered Student Performance & Dropout Risk Prediction</p>
+    </div>
+
+    <form action="/predict" method="POST">
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Age at Enrollment</label>
+                <input type="number" name="age" value="20" required>
+            </div>
+
+            <div class="field">
+                <label>Gender</label>
+                <select name="gender">
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Marital Status</label>
+                <select name="marital_status">
+                    <option value="1">Single</option>
+                    <option value="2">Married</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Debtor</label>
+                <select name="debtor">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Tuition Fees Status</label>
+                <select name="tuition">
+                    <option value="1">Up To Date</option>
+                    <option value="0">Pending</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Scholarship Holder</label>
+                <select name="scholarship">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>1st Semester Approved Subjects</label>
+                <input type="number"
+                name="first_sem_approved"
+                value="6" required>
+            </div>
+
+            <div class="field">
+                <label>1st Semester Grade</label>
+                <input type="number"
+                name="first_sem_grade"
+                value="14" required>
+            </div>
+
+            <div class="field">
+                <label>2nd Semester Approved Subjects</label>
+                <input type="number"
+                name="second_sem_approved"
+                value="5" required>
+            </div>
+
+            <div class="field">
+                <label>2nd Semester Grade</label>
+                <input type="number"
+                name="second_sem_grade"
+                value="13" required>
+            </div>
+
+        </div>
+
+        <button class="predict-btn" type="submit">
+            🚀 Predict Student Status
+        </button>
+
+    </form>
+
+    <div class="footer">
+        Powered by XGBoost + Flask Machine Learning Model
+    </div>
+
+</div>
+
+</body>
+</html>
