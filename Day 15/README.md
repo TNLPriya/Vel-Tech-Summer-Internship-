@@ -30,6 +30,10 @@ The Student Dropout Prediction System is a Machine Learning and Flask-based web 
 - templates/
 - dropout_model.pkl
 - label_encoder.pkl
+## Project Demo Video
+
+Watch the complete project demonstration here:
+https://drive.google.com/file/d/1D18PYNPPkZOIQ-AwRkFdAb-acmq8Xp2n/view?usp=sharing
 
 ## Developer
 
