@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            background:
+            linear-gradient(
+            rgba(5,15,35,0.85),
+            rgba(5,15,35,0.90)),
+            url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600');
+
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+
+            color:white;
+            padding:20px;
+        }
+
+        .card{
+            width:700px;
+            background:rgba(255,255,255,0.10);
+            backdrop-filter:blur(20px);
+            border-radius:35px;
+            padding:50px;
+            text-align:center;
+            border:1px solid rgba(255,255,255,0.15);
+            box-shadow:0 8px 35px rgba(0,0,0,0.35);
+        }
+
+        .icon{
+            font-size:70px;
+            margin-bottom:20px;
+        }
+
+        h1{
+            margin-bottom:20px;
+            font-size:42px;
+        }
+
+        .prediction{
+            font-size:40px;
+            font-weight:bold;
+            margin:25px 0;
+        }
+
+        .graduate{
+            color:#22c55e;
+        }
+
+        .dropout{
+            color:#ef4444;
+        }
+
+        .enrolled{
+            color:#f59e0b;
+        }
+
+        .confidence{
+            font-size:24px;
+            color:#dbeafe;
+            margin-bottom:35px;
+        }
+
+        .btn-group{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            display:inline-block;
+            padding:18px 30px;
+            border-radius:18px;
+            text-decoration:none;
+
+            background:
+            linear-gradient(
+            to right,
+            #06b6d4,
+            #2563eb);
+
+            color:white;
+            font-size:18px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            transform:translateY(-5px);
+            box-shadow:0 10px 20px rgba(37,99,235,0.4);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="icon">🤖</div>
+
+    <h1>Prediction Result</h1>
+
+    {% if prediction == "Graduate" %}
+        <div class="prediction graduate">🎓 Graduate</div>
+
+    {% elif prediction == "Dropout" %}
+        <div class="prediction dropout">❌ Dropout</div>
+
+    {% else %}
+        <div class="prediction enrolled">📚 Enrolled</div>
+    {% endif %}
+
+    <div class="confidence">
+        Confidence Score: {{ confidence }}%
+    </div>
+
+    {% if error %}
+        <p style="color:red;">
+            {{ error }}
+        </p>
+    {% endif %}
+
+    <div class="btn-group">
+
+        <a href="/" class="btn">
+            🔄 Predict Again
+        </a>
+
+        <a href="/customers" class="btn">
+            📊 Student Records
+        </a>
+
+        <a href="/about" class="btn">
+            ℹ About Project
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
