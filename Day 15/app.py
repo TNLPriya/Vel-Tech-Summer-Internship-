@@ -194,9 +194,14 @@ def logout():
 
 # ---------------- RUN APP ---------------- #
 
-if __name__ == '__main__':
+import os
 
+def create_tables():
     with app.app_context():
         db.create_all()
 
-    app.run(debug=True)
+create_tables()
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
