@@ -5,7 +5,8 @@ import numpy as np
 
 app = Flask(__name__)
 app.secret_key = 'studentdropout'
-
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+app.config["SESSION_COOKIE_SECURE"] = True
 # ---------------- DATABASE CONFIG ---------------- #
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -55,12 +56,7 @@ def login():
 
 @app.route('/')
 def home():
-
-    if 'user' not in session:
-        return redirect('/login')
-
     return render_template('index.html')
-
 
 # ---------------- PREDICTION ---------------- #
 
