@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Records</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            background:
+            linear-gradient(
+            135deg,
+            #0f172a,
+            #1e3a8a,
+            #2563eb);
+
+            color:white;
+            padding:40px;
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:35px;
+            font-size:42px;
+        }
+
+        .table-container{
+            background:rgba(255,255,255,0.10);
+            backdrop-filter:blur(20px);
+            border-radius:30px;
+            padding:30px;
+            box-shadow:
+            0 8px 32px rgba(0,0,0,0.3);
+            overflow-x:auto;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            background:#2563eb;
+            padding:18px;
+            font-size:18px;
+        }
+
+        td{
+            text-align:center;
+            padding:18px;
+            border-bottom:
+            1px solid rgba(255,255,255,0.2);
+        }
+
+        tr:hover{
+            background:
+            rgba(255,255,255,0.08);
+        }
+
+        .graduate{
+            color:#22c55e;
+            font-weight:bold;
+        }
+
+        .dropout{
+            color:#ef4444;
+            font-weight:bold;
+        }
+
+        .enrolled{
+            color:#f59e0b;
+            font-weight:bold;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:30px;
+            padding:16px 28px;
+            border-radius:15px;
+
+            background:
+            linear-gradient(
+            to right,
+            #06b6d4,
+            #2563eb);
+
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+            font-weight:bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>
+    📊 Student Prediction Records
+</h1>
+
+<div class="table-container">
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Scholarship</th>
+        <th>Prediction</th>
+        <th>Confidence</th>
+    </tr>
+
+    {% for student in students %}
+    <tr>
+
+        <td>{{ student.id }}</td>
+
+        <td>{{ student.age }}</td>
+
+        <td>
+            {% if student.gender == 1 %}
+                Male
+            {% else %}
+                Female
+            {% endif %}
+        </td>
+
+        <td>
+            {% if student.scholarship == 1 %}
+                Yes
+            {% else %}
+                No
+            {% endif %}
+        </td>
+
+        <td>
+
+            {% if student.prediction == 'Graduate' %}
+                <span class="graduate">
+                    🎓 Graduate
+                </span>
+
+            {% elif student.prediction == 'Dropout' %}
+                <span class="dropout">
+                    ❌ Dropout
+                </span>
+
+            {% else %}
+                <span class="enrolled">
+                    📚 Enrolled
+                </span>
+            {% endif %}
+
+        </td>
+
+        <td>
+            {{ student.confidence }}%
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+</div>
+
+<a href="/" class="btn">
+    ⬅ Back to Home
+</a>
+
+</body>
+</html>
