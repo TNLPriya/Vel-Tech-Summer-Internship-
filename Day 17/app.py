@@ -53,7 +53,34 @@ def predict():
         second_sem_approved = float(request.form['second_sem_approved'])
         second_sem_grade = float(request.form['second_sem_grade'])
 
-        # Create 34-feature array
+        # ---------------- INPUT VALIDATION ---------------- #
+
+        if age < 17 or age > 60:
+            return render_template(
+                'result.html',
+                prediction="Invalid Input",
+                confidence=0,
+                error="Age must be between 17 and 60."
+            )
+
+        if first_sem_grade < 0 or first_sem_grade > 10:
+            return render_template(
+                'result.html',
+                prediction="Invalid Input",
+                confidence=0,
+                error="1st Semester Grade must be between 0 and 10."
+            )
+
+        if second_sem_grade < 0 or second_sem_grade > 10:
+            return render_template(
+                'result.html',
+                prediction="Invalid Input",
+                confidence=0,
+                error="2nd Semester Grade must be between 0 and 10."
+            )
+
+        # ---------------- CREATE FEATURE ARRAY ---------------- #
+
         features = [0] * 34
 
         features[0] = marital_status
@@ -70,15 +97,15 @@ def predict():
         final_features = np.array([features])
 
         prediction = model.predict(final_features)
-
         probabilities = model.predict_proba(final_features)
 
         confidence = round(max(probabilities[0]) * 100, 2)
 
         result = label_encoder.inverse_transform(prediction)[0]
+                # ---------------- SAVE TO DATABASE ---------------- #
 
         student = Student(
-            age=age,
+            age=int(age),
             gender=gender,
             scholarship=scholarship,
             prediction=result,
