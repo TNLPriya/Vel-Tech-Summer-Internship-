@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Course Dropout Early Warning System</title>
+    <title>AI Student Dropout Prediction System</title>
 
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -182,7 +182,6 @@
             flex-wrap:wrap;
             padding:60px 20px;
         }
-
         .card{
             width:300px;
             padding:35px;
@@ -254,138 +253,141 @@
 <div class="navbar">
 
     <div class="logo">
-        🎓 <span>AI Student Predictor</span>
+        🎓 <span>AI Student Dropout Prediction System</span>
     </div>
 
     <div class="nav-links">
-
-        <a href="/">
-            <i class="fas fa-home"></i> Home
-        </a>
-
-        <a href="/customers">
-            <i class="fas fa-users"></i> Student Records
-        </a>
-
-        <a href="/about">
-            <i class="fas fa-circle-info"></i> About
-        </a>
-
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <a href="/customers"><i class="fas fa-users"></i> Student Records</a>
+        <a href="/about"><i class="fas fa-circle-info"></i> About</a>
     </div>
 
 </div>
+
 <div class="hero">
 
-    <h1>
-        AI Course Dropout Prediction
-    </h1>
+    <h1>AI Student Dropout Prediction System</h1>
 
     <p>
-        Predict whether a student is likely to
-        Graduate, remain Enrolled, or Dropout
-        using Artificial Intelligence and
-        Machine Learning.
+        Predict whether a student is likely to Graduate,
+        Remain Enrolled, or Drop Out using Artificial
+        Intelligence and Machine Learning based on
+        academic performance, institutional records,
+        and student-related factors.
     </p>
 
 </div>
 
 <div class="container">
 
-    <h2>🎯 Student Prediction Form</h2>
+<h2>🎯 Student Academic Prediction Form</h2>
 
-    <form action="/predict" method="POST">
+<form action="/predict" method="POST">
 
-        <div class="form-grid">
+<div class="form-grid">
 
-            <div class="input-box">
-                <label>Age</label>
-                <input
-                    type="number"
-                    name="age"
-                    required>
-            </div>
+<div class="input-box">
+<label>Age</label>
+<input
+type="number"
+id="age"
+name="age"
+min="17"
+max="60"
+placeholder="17 - 60"
+required>
+</div>
 
-            <div class="input-box">
-                <label>Gender</label>
-                <select name="gender" required>
-                    <option value="1">Male</option>
-                    <option value="0">Female</option>
-                </select>
-            </div>
+<div class="input-box">
+<label>Gender</label>
+<select name="gender" required>
+<option value="1">Male</option>
+<option value="0">Female</option>
+</select>
+</div>
 
-            <div class="input-box">
-                <label>Marital Status</label>
-                <select name="marital_status" required>
-                    <option value="1">Single</option>
-                    <option value="2">Married</option>
-                </select>
-            </div>
+<div class="input-box">
+<label>Marital Status</label>
+<select name="marital_status" required>
+<option value="1">Single</option>
+<option value="2">Married</option>
+</select>
+</div>
 
-            <div class="input-box">
-                <label>Debtor</label>
-                <select name="debtor" required>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
+<div class="input-box">
+<label>Debtor</label>
+<select name="debtor" required>
+<option value="0">No</option>
+<option value="1">Yes</option>
+</select>
+</div>
 
-            <div class="input-box">
-                <label>Tuition Fees Up To Date</label>
-                <select name="tuition" required>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </select>
-            </div>
+<div class="input-box">
+<label>Tuition Fees Up To Date</label>
+<select name="tuition" required>
+<option value="1">Yes</option>
+<option value="0">No</option>
+</select>
+</div>
 
-            <div class="input-box">
-                <label>Scholarship Holder</label>
-                <select name="scholarship" required>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </select>
-            </div>
+<div class="input-box">
+<label>Scholarship Holder</label>
+<select name="scholarship" required>
+<option value="1">Yes</option>
+<option value="0">No</option>
+</select>
+</div>
+<div class="input-box">
+    <label>Academic Term 1 Passed Subjects</label>
+    <input
+        type="number"
+        name="first_sem_approved"
+        min="0"
+        required>
+</div>
 
-            <div class="input-box">
-                <label>1st Semester Approved Subjects</label>
-                <input
-                    type="number"
-                    name="first_sem_approved"
-                    required>
-            </div>
+<div class="input-box">
+    <label>Academic Term 1 Grade</label>
+    <input
+        type="number"
+        id="grade1"
+        name="first_sem_grade"
+        min="0"
+        max="10"
+        step="0.1"
+        placeholder="0 - 10"
+        required>
+</div>
 
-            <div class="input-box">
-                <label>1st Semester Grade</label>
-                <input
-                    type="number"
-                    step="0.1"
-                    name="first_sem_grade"
-                    required>
-            </div>
+<div class="input-box">
+    <label>Academic Term 2 Passed Subjects</label>
+    <input
+        type="number"
+        name="second_sem_approved"
+        min="0"
+        required>
+</div>
 
-            <div class="input-box">
-                <label>2nd Semester Approved Subjects</label>
-                <input
-                    type="number"
-                    name="second_sem_approved"
-                    required>
-            </div>
+<div class="input-box">
+    <label>Academic Term 2 Grade</label>
+    <input
+        type="number"
+        id="grade2"
+        name="second_sem_grade"
+        min="0"
+        max="10"
+        step="0.1"
+        placeholder="0 - 10"
+        required>
+</div>
 
-            <div class="input-box">
-                <label>2nd Semester Grade</label>
-                <input
-                    type="number"
-                    step="0.1"
-                    name="second_sem_grade"
-                    required>
-            </div>
+</div>
 
-        </div>
+<button class="btn" type="submit">
+    🎓 Predict Student Status
+</button>
 
-        <button class="btn" type="submit">
-            🚀 Predict Student Performance
-        </button>
-
-    </form>
+</form>
 
 </div>
 
@@ -396,7 +398,8 @@
         <h3>AI Prediction</h3>
         <p>
             Machine Learning predicts
-            student performance accurately.
+            student academic status and
+            dropout risk accurately.
         </p>
     </div>
 
@@ -404,8 +407,8 @@
         <i class="fas fa-chart-line"></i>
         <h3>Confidence Score</h3>
         <p>
-            Displays prediction confidence
-            percentage.
+            Displays the confidence score
+            of the predicted student status.
         </p>
     </div>
 
@@ -413,16 +416,46 @@
         <i class="fas fa-database"></i>
         <h3>Database Storage</h3>
         <p>
-            Stores student records and
-            prediction history.
+            Stores student details and
+            prediction history securely.
         </p>
     </div>
 
 </div>
 
 <footer>
-    © 2026 Course Dropout Early Warning System
+    © 2026 AI Student Dropout Prediction System
 </footer>
+
+<script>
+
+document.querySelector("form").addEventListener("submit", function(e){
+
+    let age = Number(document.getElementById("age").value);
+    let grade1 = Number(document.getElementById("grade1").value);
+    let grade2 = Number(document.getElementById("grade2").value);
+
+    if(age < 17 || age > 60){
+        alert("Age must be between 17 and 60.");
+        e.preventDefault();
+        return;
+    }
+
+    if(grade1 < 0 || grade1 > 10){
+        alert("Academic Term 1 Grade must be between 0 and 10.");
+        e.preventDefault();
+        return;
+    }
+
+    if(grade2 < 0 || grade2 > 10){
+        alert("Academic Term 2 Grade must be between 0 and 10.");
+        e.preventDefault();
+        return;
+    }
+
+});
+
+</script>
 
 </body>
 </html>
