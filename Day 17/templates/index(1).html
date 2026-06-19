@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Student Dropout Prediction System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+        body{
+            min-height:100vh;color:white;overflow-x:hidden;
+            background:linear-gradient(rgba(5,15,35,.82),rgba(5,15,35,.88)),
+            url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600');
+            background-size:cover;background-position:center;background-attachment:fixed;
+        }
+        .navbar{display:flex;justify-content:space-between;align-items:center;padding:22px 60px;background:rgba(255,255,255,.08);backdrop-filter:blur(20px);}
+        .logo{font-size:30px;font-weight:bold}.logo span{color:#38bdf8}
+        .nav-links{display:flex;gap:20px}.nav-links a{text-decoration:none;color:#fff;padding:12px 18px;border-radius:14px}
+        .nav-links a:hover{background:rgba(56,189,248,.18);color:#38bdf8}
+        .hero{text-align:center;padding:80px 20px 50px}
+        .hero h1{font-size:56px;margin-bottom:15px}
+        .hero p{font-size:21px;max-width:850px;margin:auto;line-height:1.8;color:#d1d5db}
+        .container{width:80%;margin:auto;padding:45px;border-radius:30px;background:rgba(255,255,255,.10);backdrop-filter:blur(20px)}
+        .container h2{text-align:center;margin-bottom:35px}
+        .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
+        .input-box{display:flex;flex-direction:column}
+        label{margin-bottom:8px}
+        input,select{padding:16px;border:none;border-radius:16px;background:rgba(255,255,255,.12);color:#fff}
+        select option{color:#000}
+        .btn{width:100%;margin-top:35px;padding:18px;border:none;border-radius:18px;background:linear-gradient(to right,#06b6d4,#2563eb);color:#fff;font-size:20px;font-weight:bold;cursor:pointer}
+        .features{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;padding:60px 20px}
+        .card{width:300px;padding:30px;border-radius:25px;background:rgba(255,255,255,.10);text-align:center}
+        .card i{font-size:45px;color:#38bdf8;margin-bottom:15px}
+        footer{text-align:center;padding:30px;background:rgba(255,255,255,.08)}
+        @media(max-width:900px){.form-grid{grid-template-columns:1fr}.container{width:92%}}
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+<div class="logo">🎓 <span>AI Student Predictor</span></div>
+<div class="nav-links">
+<a href="/"><i class="fas fa-home"></i> Home</a>
+<a href="/customers"><i class="fas fa-users"></i> Student Records</a>
+<a href="/about"><i class="fas fa-circle-info"></i> About</a>
+</div>
+</div>
+
+<div class="hero">
+<h1>AI Student Dropout Prediction System</h1>
+<p>Predict whether a student is likely to Graduate, Remain Enrolled, or Drop Out using Artificial Intelligence and Machine Learning.</p>
+</div>
+
+<div class="container">
+<h2>🎯 Student Academic Prediction Form</h2>
+
+<form action="/predict" method="POST">
+<div class="form-grid">
+
+<div class="input-box">
+<label>Age</label>
+<input type="number" id="age" name="age" min="5" max="60" placeholder="5 - 60" required>
+</div>
+
+<div class="input-box"><label>Gender</label>
+<select name="gender"><option value="1">Male</option><option value="0">Female</option></select></div>
+
+<div class="input-box"><label>Marital Status</label>
+<select name="marital_status"><option value="1">Single</option><option value="2">Married</option></select></div>
+
+<div class="input-box"><label>Debtor</label>
+<select name="debtor"><option value="0">No</option><option value="1">Yes</option></select></div>
+
+<div class="input-box"><label>Tuition Fees Up To Date</label>
+<select name="tuition"><option value="1">Yes</option><option value="0">No</option></select></div>
+
+<div class="input-box"><label>Scholarship Holder</label>
+<select name="scholarship"><option value="1">Yes</option><option value="0">No</option></select></div>
+
+<div class="input-box">
+<label>Academic Term 1 Passed Subjects</label>
+<input type="number" name="first_sem_approved" min="0" required>
+</div>
+
+<div class="input-box">
+<label>Academic Term 1 Grade</label>
+<input type="number" id="grade1" name="first_sem_grade" min="0" max="10" step="0.1" placeholder="0 - 10" required>
+</div>
+
+<div class="input-box">
+<label>Academic Term 2 Passed Subjects</label>
+<input type="number" name="second_sem_approved" min="0" required>
+</div>
+
+<div class="input-box">
+<label>Academic Term 2 Grade</label>
+<input type="number" id="grade2" name="second_sem_grade" min="0" max="10" step="0.1" placeholder="0 - 10" required>
+</div>
+
+</div>
+<button class="btn" type="submit">🎓 Predict Student Status</button>
+</form>
+</div>
+
+<div class="features">
+<div class="card"><i class="fas fa-brain"></i><h3>AI Prediction</h3><p>Machine Learning predicts student academic status and dropout risk accurately.</p></div>
+<div class="card"><i class="fas fa-chart-line"></i><h3>Confidence Score</h3><p>Displays the confidence score of the predicted student status.</p></div>
+<div class="card"><i class="fas fa-database"></i><h3>Database Storage</h3><p>Stores student information and prediction history securely.</p></div>
+</div>
+
+<footer>© 2026 AI Student Dropout Prediction System</footer>
+
+<script>
+document.querySelector("form").addEventListener("submit",function(e){
+let age=Number(document.getElementById("age").value);
+let g1=Number(document.getElementById("grade1").value);
+let g2=Number(document.getElementById("grade2").value);
+if(age<5||age>60){alert("Age must be between 5 and 60.");e.preventDefault();}
+if(g1<0||g1>10){alert("Academic Term 1 Grade must be between 0 and 10.");e.preventDefault();}
+if(g2<0||g2>10){alert("Academic Term 2 Grade must be between 0 and 10.");e.preventDefault();}
+});
+</script>
+
+</body>
+</html>
